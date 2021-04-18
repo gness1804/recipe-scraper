@@ -1,12 +1,14 @@
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 
+const [, , url] = process.argv;
+
+if (!url) throw new Error('Error: url argument required.');
+
 (async () => {
   let html;
   try {
-    const res = await fetch(
-      'https://www.allrecipes.com/recipe/272858/air-fryer-chicken-thighs/',
-    );
+    const res = await fetch(url);
     html = await res.text();
   } catch (error) {
     console.error(`Failed to retrieve recipe: ${error}.`);
@@ -40,7 +42,7 @@ const fetch = require('node-fetch');
 
   const body = `
     ${title}
-    ${description}
+    ${description || ''}
 
     Total ingredients: ${ingredientsCount}
     Total steps: ${stepsCount}
