@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Graham Nessler",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.6",
     "node-fetch": "^2.6.1"
