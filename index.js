@@ -33,29 +33,29 @@ const basePath = process.env.FILE_PATH;
   // add all ingredients to ingredients arr
   $('.ingredients-item-name').each((i, elem) => {
     if (elem && elem.children && elem.children[0].data) {
-      ingredients[i] = elem.children[0].data.trim();
+      ingredients[i] = `${i + 1}.) ${elem.children[0].data.trim()}`;
     }
   });
 
   // add all steps to steps arr
   $('.instructions-section-item .section-body .paragraph p').each((i, elem) => {
     if (elem && elem.children && elem.children[0].data) {
-      steps[i] = elem.children[0].data.trim();
+      steps[i] = `${i + 1}.) ${elem.children[0].data.trim()} \n`;
     }
   });
 
   const body = `
-    ${title}
-    ${description || ''}
+  ${title} \n
+  ${description || ''} \n
 
-    Total ingredients: ${ingredientsCount}
-    Total steps: ${stepsCount}
+  Total ingredients: ${ingredientsCount}
+  Total steps: ${stepsCount}
 
-    Ingredients:
-    ${ingredients.join('\n')}
+  Ingredients:
+  ${ingredients.join('\n')}
 
-    Steps:
-    ${steps.join('\n')}
+  Steps:
+  ${steps.join('\n')}
   `;
 
   const fileName = `${basePath}/${title}.txt`;
