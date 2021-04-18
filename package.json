@@ -6,10 +6,16 @@
   "author": "Graham Nessler",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint ."
   },
+  "pre-commit": [
+    "lint"
+  ],
   "dependencies": {
     "cheerio": "^1.0.0-rc.6",
-    "node-fetch": "^2.6.1"
+    "eslint": "^7.24.0",
+    "node-fetch": "^2.6.1",
+    "pre-commit": "^1.2.2"
   }
 }

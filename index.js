@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 
-(async () => {
+async () => {
   let html;
   try {
     const res = await fetch('https://www.allrecipes.com/recipe/272858/air-fryer-chicken-thighs/');
@@ -14,4 +14,4 @@ const fetch = require('node-fetch');
   const $ = cheerio.load(html);
   const title = $('h1.heading-content').text();
   const description = $('.recipe-summary p').text();
-})()
+};
