@@ -1,3 +1,10 @@
+/**
+* Scrapes recipe info from allrecipes.com and sends parsed text output to a file.
+*
+* @param string basePath - the base path where to save the file. Example: '~/Cooking/Recipes'.
+  @param string url - the url. Example: 'https://www.allrecipes.com/recipe/217333/chicken-vindaloo/'
+*/
+
 require('dotenv').config();
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
