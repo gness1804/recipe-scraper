@@ -1,0 +1,12 @@
+{
+  "name": "recipe-scraper",
+  "version": "1.0.0",
+  "description": "A simple scraper for recipe sites. ",
+  "main": "index.js",
+  "author": "Graham Nessler",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.6",
+    "node-fetch": "^2.6.1"
+  }
+}
