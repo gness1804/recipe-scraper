@@ -21,23 +21,24 @@ const fetch = require('node-fetch');
   const description = $('.recipe-summary p').text();
 
   const ingredientsCount = $('.ingredients-item-name').length;
-  const stepsCount = $('.instructions-section-item .section-body .paragraph p').length;
+  const stepsCount = $('.instructions-section-item .section-body .paragraph p')
+    .length;
 
   // add all ingredients to ingredients arr
   $('.ingredients-item-name').each((i, elem) => {
-    if (elem && elem.children &&  elem.children[0].data) {
-      ingredients[i] =  elem.children[0].data.trim();
+    if (elem && elem.children && elem.children[0].data) {
+      ingredients[i] = elem.children[0].data.trim();
     }
-  })
+  });
 
   // add all steps to steps arr
   $('.instructions-section-item .section-body .paragraph p').each((i, elem) => {
-    if (elem && elem.children &&  elem.children[0].data) {
-      steps[i] =  elem.children[0].data.trim();
+    if (elem && elem.children && elem.children[0].data) {
+      steps[i] = elem.children[0].data.trim();
     }
-  })
+  });
 
-  const body =  `
+  const body = `
     ${title}
     ${description}
 
@@ -49,7 +50,7 @@ const fetch = require('node-fetch');
 
     Steps:
     ${steps.join('\n')}
-  `
+  `;
 
   return body;
 })();

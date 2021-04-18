@@ -13,7 +13,7 @@
   },
   "pre-commit": [
     "lint",
-    "prettier:write"
+    "prettier:check"
   ],
   "dependencies": {
     "cheerio": "^1.0.0-rc.6",
