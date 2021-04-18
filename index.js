@@ -53,6 +53,9 @@ if (!url) throw new Error('Error: url argument required.');
   ${title} \n
   ${description || ''} \n
 
+  Original URL:
+  ${url}
+
   Total ingredients: ${ingredientsCount}
   Total steps: ${stepsCount}
 
