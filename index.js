@@ -3,11 +3,9 @@ const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 const { writeFile } = require('fs').promises;
 
-const [, , url] = process.argv;
+const [, , basePath, url] = process.argv;
 
 if (!url) throw new Error('Error: url argument required.');
-
-const basePath = process.env.RECIPES_FILE_PATH;
 
 (async () => {
   let html;
