@@ -16,6 +16,7 @@ if (!url) throw new Error('Error: url argument required.');
 
 (async () => {
   let html;
+  const startTime = Date.now();
   try {
     const res = await fetch(url);
     html = await res.text();
@@ -76,4 +77,7 @@ if (!url) throw new Error('Error: url argument required.');
 
   await writeFile(fileName, body);
   console.info(`Successfully created ${fileName}.`);
+  const endTime = Date.now() - startTime;
+  //eslint-disable-next-line no-console
+  console.info(`Data operation completed in ${endTime / 1000} seconds.`);
 })();
