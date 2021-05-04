@@ -56,7 +56,7 @@ if (!url) throw new Error('Error: url argument required.');
   <h1>${title}</h1> \n
   <h2 style="font-style: italic;">${description || ''}</h2> \n
 
-  <a href="${url}" target="_blank">Original Page</a>
+  <p><a href="${url}" target="_blank">Original Page</a></p> \n
 
   <h3>Total ingredients: <span>${ingredientsCount}</span></h3>
   <h3 style="margin-bottom: 3rem;">Total steps: <span>${stepsCount}</span></h3>
