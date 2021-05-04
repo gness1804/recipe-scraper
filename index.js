@@ -38,35 +38,41 @@ if (!url) throw new Error('Error: url argument required.');
   // add all ingredients to ingredients arr
   $('.ingredients-item-name').each((i, elem) => {
     if (elem && elem.children && elem.children[0].data) {
-      ingredients[i] = `${i + 1}.) ${elem.children[0].data.trim()}`;
+      ingredients[i] = `${elem.children[0].data.trim()}`;
     }
   });
 
   // add all steps to steps arr
   $('.instructions-section-item .section-body .paragraph p').each((i, elem) => {
     if (elem && elem.children && elem.children[0].data) {
-      steps[i] = `${i + 1}.) ${elem.children[0].data.trim()} \n`;
+      steps[i] = `${elem.children[0].data.trim()} \n`;
     }
   });
 
-  const body = `
-  ${title} \n
-  ${description || ''} \n
+  const body = /*html*/ `
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <h1>${title}</h1> \n
+  <h2 style="font-style: italic;">${description || ''}</h2> \n
 
-  Original URL:
-  ${url}
+  <a href="${url}" target="_blank">Original Page</a>
 
-  Total ingredients: ${ingredientsCount}
-  Total steps: ${stepsCount}
+  <h3>Total ingredients: <span>${ingredientsCount}</span></h3>
+  <h3 style="margin-bottom: 3rem;">Total steps: <span>${stepsCount}</span></h3>
 
-  Ingredients:
-  ${ingredients.join('\n')}
+  <h3>Ingredients:</h3>
+  <ol>
+    ${ingredients.map((ing) => `<li>${ing}</li>`).join('\n')}
+  </ol>
 
-  Steps:
-  ${steps.join('\n')}
-  `;
+  <h3>Steps:</h3>
+  <ol>
+    ${steps.map((step) => `<li>${step}</li>`).join('\n')}
+  </ol>
+`;
 
-  const fileName = `${basePath}/${title}.txt`;
+  const fileName = `${basePath}/${title}.html`;
 
   await writeFile(fileName, body);
   console.info(`Successfully created ${fileName}.`);
