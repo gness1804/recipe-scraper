@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
 * Scrapes recipe info from allrecipes.com and sends parsed text output to a file.
 *
@@ -10,7 +12,10 @@ const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 const { writeFile } = require('fs').promises;
 
-const [, , basePath, url] = process.argv;
+const { BASE_PATH } = process.env;
+const basePath = BASE_PATH;
+
+const [, , url] = process.argv;
 
 if (!url) throw new Error('Error: url argument required.');
 
@@ -75,9 +80,13 @@ if (!url) throw new Error('Error: url argument required.');
 
   const fileName = `${basePath}/${title}.html`;
 
-  await writeFile(fileName, body);
-  console.info(`Successfully created ${fileName}.`);
-  const endTime = Date.now() - startTime;
-  //eslint-disable-next-line no-console
-  console.info(`Data operation completed in ${endTime / 1000} seconds.`);
+  try {
+    await writeFile(fileName, body);
+    console.info(`Successfully created ${fileName}.`);
+    const endTime = Date.now() - startTime;
+    //eslint-disable-next-line no-console
+    console.info(`Data operation completed in ${endTime / 1000} seconds.`);
+  } catch (error) {
+    console.error(`Failed to write file: ${fileName} -- ${error}`);
+  }
 })();

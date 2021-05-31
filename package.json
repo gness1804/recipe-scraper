@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A simple scraper for recipe sites. ",
   "main": "index.js",
+  "bin": {
+    "recipe-scraper": "index.js"
+  },
   "author": "Graham Nessler",
   "license": "MIT",
   "scripts": {
